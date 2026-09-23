@@ -347,6 +347,7 @@ comptime {
 
 pub const std_options: std.Options = opts: {
     var options: std.Options = .{};
+    if (terminal.options.c_abi) options.signal_stack_size = null;
 
     if (builtin.target.cpu.arch.isWasm()) {
         // Wasm builds we specifically want to optimize for space with small
